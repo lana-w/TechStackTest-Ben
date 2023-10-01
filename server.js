@@ -21,3 +21,31 @@ async function run() {
     }
 }
 run().catch(console.dir);
+
+// For some reason, just const mongoose = require('mongoose'); raises a warning (see https://stackoverflow.com/questions/72627639/unresolved-function-or-method-connect-mongoose)
+const mongoose = require('mongoose').default;
+mongoose.connect(uri)
+    .then(() =>{
+        console.log('mongoose connected');
+    })
+    .catch(() => {
+        console.log('error');
+})
+
+const coolSchema = new mongoose.Schema({
+    name:{
+        type:String,
+        required:true // Cannot be empty.
+    },
+    // name:{
+    //     type:String,
+    //     required:true // Cannot be empty.
+    // }
+})
+
+
+const collection = new mongoose.model('henlo', coolSchema, 'cool_database');
+data = {
+    name:"bean"
+}
+collection.insertMany([data]);
