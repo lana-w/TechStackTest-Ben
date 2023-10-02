@@ -25,7 +25,7 @@ app.post("/", function(req, res){
         content: req.body.content
     })
     newNote.save();
-    // res.redirect("/");
+    res.redirect("/");
 })
 
 app.listen(3000, function(){
