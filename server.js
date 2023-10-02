@@ -32,8 +32,8 @@ mongoose.connect(uri)
         console.log('error');
 })
 
-const coolSchema = new mongoose.Schema({
-    name:{
+const timeSchema = new mongoose.Schema({
+    time:{
         type:String,
         required:true // Cannot be empty.
     },
@@ -42,10 +42,20 @@ const coolSchema = new mongoose.Schema({
     //     required:true // Cannot be empty.
     // }
 })
+const collection = new mongoose.model('time', timeSchema);
 
+function saveTime(){
+    let today = new Date();
+    let date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+    let time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+    let dateAndTime = date + ' ' + time
 
-const collection = new mongoose.model('henlo', coolSchema, 'cool_database');
-data = {
-    name:"bean"
+    let data = {
+        time:dateAndTime
+    }
+
+    collection.insertMany([data]);
 }
-collection.insertMany([data]);
+
+
+
