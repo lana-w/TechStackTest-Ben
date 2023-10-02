@@ -9,8 +9,8 @@ mongoose.connect("mongodb+srv://benssocool:VmBBvf7OnXQou2LA@cluster0.rbfpjdr.mon
 
 // Create data scheme
 const notesSchema = {
-    title: String,
-    content: String
+    name: String,
+    comment: String
 }
 
 const Note = mongoose.model("Note", notesSchema);
@@ -21,11 +21,11 @@ app.get("/", function(req, res){
 
 app.post("/", function(req, res){
     let newNote = new Note({
-        title: req.body.title,
-        content: req.body.content
+        name: req.body.name,
+        comment: req.body.comment
     })
     newNote.save();
-    // res.redirect("/");
+    res.redirect("/");
 })
 
 app.listen(3000, function(){
