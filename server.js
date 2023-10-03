@@ -5,7 +5,7 @@ const bodyParser = require("body-parser");
 
 app.use(bodyParser.urlencoded({extended: true}));
 
-mongoose.connect("mongodb+srv://benssocool:VmBBvf7OnXQou2LA@cluster0.rbfpjdr.mongodb.net/cool_database", {useNewUrlParser: true}, {useUnifiedTopology: true});
+mongoose.connect("mongodb+srv://Lana_W:WelcomeToMongoDB@cluster0.82j34hm.mongodb.net/?retryWrites=true&w=majority", {useNewUrlParser: true}, {useUnifiedTopology: true});
 
 // Create data scheme
 const notesSchema = {
